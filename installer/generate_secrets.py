@@ -14,8 +14,6 @@ from pathlib import Path
 import secrets
 import yaml
 
-from onepassword import OnePassword
-
 
 class SecretGenerator:
     def __init__(self, environment, regenerate):
@@ -252,57 +250,6 @@ class SecretGenerator:
         self._set_generated("portal", "ADMIN_PASSWORD", pw)
 
 
-class OnePasswordSecretGenerator(SecretGenerator):
-    def __init__(self, environment, regenerate):
-        super().__init__(environment, regenerate)
-        self.op_secrets = {}
-        self.op = OnePassword()
-        self.parse_vault()
-
-    def parse_vault(self):
-        items = self.op.list_items("RSP-Vault")
-
-        for i in items:
-            key = None
-            environments = []
-            doc = self.op.get_item(uuid=i["uuid"])
-
-            for section in doc["details"]["sections"]:
-                for field in section["fields"]:
-                    if field["t"] == "generate_secrets_key":
-                        if key is None:
-                            key = field["v"]
-                        else:
-                            raise Exception("Found two generate_secrets_keys for {key}")
-                    elif field["t"] == "environment":
-                        environments.append(field["v"])
-
-            # The type of secret is either a note or a password login.
-            # First, check the notes.
-            secret_value = doc["details"]["notesPlain"]
-
-            # If we don't find anything, pull the password from a login item.
-            if not secret_value:
-                for f in doc["details"]["fields"]:
-                    if f["designation"] == "password":
-                        secret_value = f["value"]
-
-            if self.environment in environments:
-                self.op_secrets[key] = secret_value
-            elif not environments and key not in self.op_secrets:
-                self.op_secrets[key] = secret_value
-
-    def input_field(self, component, name, description):
-        key = f"{component} {name}"
-        if key not in self.op_secrets:
-            raise Exception(f"Did not find entry in 1Password for {key}")
-
-        self.secrets[component][name] = self.op_secrets[key]
-
-    def input_file(self, component, name, description):
-        return self.input_field(component, name, description)
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="generate_secrets")
     parser.add_argument("--op", default=False, action="store_true", help="Load secrets from 1Password")
@@ -310,10 +257,7 @@ if __name__ == "__main__":
     parser.add_argument("environment", help="Environment to generate")
     args = parser.parse_args()
 
-    if args.op:
-        sg = OnePasswordSecretGenerator(args.environment, args.regenerate)
-    else:
-        sg = SecretGenerator(args.environment, args.regenerate)
+    sg = SecretGenerator(args.environment, args.regenerate)
 
     sg.load()
     sg.generate()
