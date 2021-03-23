@@ -1,0 +1,40 @@
+gafaelfawr:
+  pull_secret: 'pull-secret'
+  host: data-dev.lsst.eu
+  ingress:
+    host: data-dev.lsst.eu
+  vault_secrets_path: "secret/k8s_operator/data-dev.lsst.eu/gafaelfawr"
+
+  # Do not specify ingress.host because we're using the wildcard virtual host.
+
+  # Session length and token expiration (in minutes).
+  issuer:
+    exp_minutes: 43200  # 30 days
+
+  github:
+    client_id: f46555b3f4c524e764ac
+
+  # Allow access by GitHub team.
+  group_mapping:
+    "exec:admin":
+      - "in2p3-dp0-admin"
+    "exec:user":
+      - "in2p3-dp0-admin"
+    "read:workspace":
+      - "in2p3-dp0-admin"
+    "read:workspace/user":
+      - "in2p3-dp0-admin"
+    "write:workspace/user":
+      - "in2p3-dp0-admin"
+    "exec:portal":
+      - "in2p3-dp0-admin"
+    "exec:notebook":
+      - "in2p3-dp0-admin"
+    "read:tap":
+      - "in2p3-dp0-admin"
+    "read:image":
+      - "in2p3-dp0-admin"
+
+pull-secret:
+  enabled: true
+  path: secret/k8s_operator/rsp-cc/pull-secret

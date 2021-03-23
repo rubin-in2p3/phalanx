@@ -2,3 +2,4 @@
 /services/*/charts/
 /services-expanded/
 .DS_Store
+Chart.lock

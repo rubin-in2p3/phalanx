@@ -10,7 +10,8 @@ GIT_URL=`git config --get remote.origin.url`
 # Github runs in a detached head state, but sets GITHUB_REF,
 # extract the branch from it.  If we're there, use that branch.
 # git branch --show-current will return empty in deatached head.
-GIT_BRANCH=${GITHUB_HEAD_REF:-`git branch --show-current`}
+#GIT_BRANCH=${GITHUB_HEAD_REF:-`git branch --show-current`}
+GIT_BRANCH=master
 
 echo "Set VAULT_TOKEN in a secret for vault-secrets-operator..."
 # The namespace may not exist already, but don't error if it does.
@@ -53,7 +54,7 @@ argocd login \
 echo "Creating top level application"
 argocd app create science-platform \
   --repo $GIT_URL \
-  --path science-platform --dest-namespace default \
+  --path science-platform --dest-namespace rsp-dev \
   --dest-server https://kubernetes.default.svc \
   --upsert \
   --revision $GIT_BRANCH \

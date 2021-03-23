@@ -1,0 +1,57 @@
+firefly:
+  pull_secret: 'pull-secret'
+  replicaCount: 2
+  image:
+    tag: "rc-2.1.0-2"
+
+  ingress:
+    host: 'data-dev.lsst.eu'
+    annotations:
+      nginx.ingress.kubernetes.io/auth-method: GET
+      nginx.ingress.kubernetes.io/auth-response-headers: X-Auth-Request-Uid, X-Auth-Request-Token
+      nginx.ingress.kubernetes.io/auth-signin: "https://data-dev.lsst.eu/login"
+      nginx.ingress.kubernetes.io/auth-url: "https://data-dev.lsst.eu/auth?scope=exec:portal"
+      nginx.ingress.kubernetes.io/configuration-snippet: |
+        proxy_set_header X-Original-URI $request_uri;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_set_header X-Forwarded-Port 443;
+        proxy_set_header X-Forwarded-Path /portal/app;
+
+  secrets:
+    enabled: false
+
+  vault_secrets:
+    enabled: true
+    path: 'secret/k8s_operator/rsp-cc/portal'
+
+  max_jvm_size: "23G"
+
+  redis:
+    resources:
+      limits:
+        memory: 20Mi
+
+  nodeSelector:
+    environment: portal-stable
+
+  tolerations:
+  - effect: NoSchedule
+    key: dedicated
+    operator: Equal
+    value: portal
+
+  resources:
+    limits:
+      memory: 24Gi
+
+  securityContext:
+    runAsUser: 101
+    runAsGroup: 102
+
+  volumes:
+    firefly_workarea_hostpath: /sui/firefly/workarea
+    firefly_config_hostpath: /sui/firefly/config
+
+pull-secret:
+  enabled: true
+  path: secret/k8s_operator/rsp-cc/pull-secret
