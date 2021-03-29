@@ -2,3 +2,4 @@
 /services/*/charts/
 /services-expanded/
 Chart.lock
+/installer/vault-info/
