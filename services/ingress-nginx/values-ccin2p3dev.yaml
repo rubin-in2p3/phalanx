@@ -1,5 +1,8 @@
 ingress-nginx:
   controller:
+    nodeSelector:
+      kubernetes.io/hostname: "ccqserv202"
+
     config:
       compute-full-forwarded-for: "true"
       large-client-header-buffers: "4 64k"
@@ -17,4 +20,4 @@ vault_certificate:
 
 pull-secret:
   enabled: true
-  path: secret/k8s_operator/data.lsst.cloud/pull-secret
+  path: secret/k8s_operator/rsp-cc/pull-secret
