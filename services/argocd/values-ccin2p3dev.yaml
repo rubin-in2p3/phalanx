@@ -60,8 +60,8 @@ argo-cd:
         - url: https://charts.helm.sh/stable
           name: stable
       resource.customizations: |
-       networking.k8s.io/Ingress:
-         health.lua: |
+        networking.k8s.io/Ingress:
+          health.lua: |
            hs = {}
            hs.status = "Healthy"
            return hs 
