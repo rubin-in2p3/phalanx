@@ -7,7 +7,7 @@ argo:
 cert_issuer:
   enabled: false
 cert_manager:
-  enabled: true
+  enabled: false
 chronograf:
   enabled: false
 exposurelog:
