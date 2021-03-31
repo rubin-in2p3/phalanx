@@ -21,6 +21,8 @@ ingress-nginx:
       loadBalancerIP: "134.158.237.2"
     admissionWebhooks:
       enabled: false
+    extraArgs:
+      default-ssl-certificate: ingress-nginx/ingress-certificate
     podLabels:
       hub.jupyter.org/network-access-proxy-http: "true"
 
