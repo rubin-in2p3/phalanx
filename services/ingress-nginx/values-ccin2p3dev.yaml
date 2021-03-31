@@ -2,6 +2,12 @@ ingress-nginx:
   controller:
     nodeSelector:
       kubernetes.io/hostname: "ccqserv202"
+    
+    tolerations:
+    - key: "dedicated"
+      operator: "Equal"
+      value: "qserv"
+      effect: "NoSchedule"
 
     config:
       compute-full-forwarded-for: "true"
@@ -16,7 +22,8 @@ ingress-nginx:
       hub.jupyter.org/network-access-proxy-http: "true"
 
 vault_certificate:
-  enabled: false
+  enabled: true
+  path: secret/k8s_operator/rsp-cc/ingress-nginx
 
 pull-secret:
   enabled: true
