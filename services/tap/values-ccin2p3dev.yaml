@@ -7,7 +7,7 @@ cadc-tap:
   host: "data-dev.lsst.eu"
 
   secrets:
-    enabled: true
+    enabled: false
 
   vault_secrets:
     enabled: true
