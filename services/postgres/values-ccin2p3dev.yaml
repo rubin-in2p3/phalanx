@@ -1,7 +1,4 @@
 postgres:
-  env:
-    - name: PGDATA
-      value: /var/lib/postgresql/data/pgdata
   pull_secret: 'pull-secret'
   vault_secrets:
     path: 'secret/k8s_operator/rsp-cc/postgres'
