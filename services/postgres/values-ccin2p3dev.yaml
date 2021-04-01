@@ -7,7 +7,7 @@ postgres:
     user: 'jovyan'
     db: 'jupyterhub'
   postgres_storage_class: 'rsp-local-storage'
-  volume_name: 'postgres-data-volume'
+  volume_name: 'postgres-data-rsp-ccqserv219'
   image:
     tag: '0.0.3'
 
