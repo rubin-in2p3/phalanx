@@ -18,7 +18,7 @@ firefly:
         proxy_set_header X-Forwarded-Path /portal/app;
 
   secrets:
-    enabled: false
+    enabled: true
 
   vault_secrets:
     enabled: true
@@ -31,26 +31,9 @@ firefly:
       limits:
         memory: 20Mi
 
-  nodeSelector:
-    environment: portal-stable
-
-  tolerations:
-  - effect: NoSchedule
-    key: dedicated
-    operator: Equal
-    value: portal
-
   resources:
     limits:
       memory: 24Gi
-
-  securityContext:
-    runAsUser: 101
-    runAsGroup: 102
-
-  volumes:
-    firefly_workarea_hostpath: /sui/firefly/workarea
-    firefly_config_hostpath: /sui/firefly/config
 
 pull-secret:
   enabled: true
