@@ -3,7 +3,7 @@ gafaelfawr:
   host: data-dev.lsst.eu
   ingress:
     host: data-dev.lsst.eu
-  vault_secrets_path: "secret/k8s_operator/data-dev.lsst.eu/gafaelfawr"
+  vault_secrets_path: "secret/k8s_operator/rsp-cc/gafaelfawr"
 
   # Do not specify ingress.host because we're using the wildcard virtual host.
 
