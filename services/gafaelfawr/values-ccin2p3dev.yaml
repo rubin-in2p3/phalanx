@@ -14,6 +14,10 @@ gafaelfawr:
     host: data-dev.lsst.eu
   vaultSecretsPath: "secret/k8s_operator/rsp-cc/gafaelfawr"
 
+  redis:
+    persistence:
+      enabled: false
+
   config:
     host: data-dev.lsst.eu
 
