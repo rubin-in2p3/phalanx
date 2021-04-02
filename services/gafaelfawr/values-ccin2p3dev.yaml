@@ -28,10 +28,10 @@ gafaelfawr:
       exp_minutes: 43200  # 30 days
 
     github:
-      client_id: ae314e45a6af43ea910a
+      clientId: ae314e45a6af43ea910a
 
   # Allow access by GitHub team.
-    group_mapping:
+    groupMapping:
       "exec:admin":
         - "in2p3-dp0-admin"
       "exec:user":
