@@ -1,4 +1,13 @@
 gafaelfawr:
+  nodeSelector:
+    kubernetes.io/hostname: "ccqserv202"
+
+  tolerations:
+    - key: "dedicated"
+      operator: "Equal"
+      value: "qserv"
+      effect: "NoSchedule"
+
   pull_secret: 'pull-secret'
   host: data-dev.lsst.eu
   ingress:
