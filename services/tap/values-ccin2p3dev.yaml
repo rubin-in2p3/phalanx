@@ -13,8 +13,8 @@ cadc-tap:
     enabled: true
     path: 'secret/k8s_operator/rsp-cc/tap'
 
-  gcs_bucket: 'async-results.lsst.codes'
-  gcs_bucket_url: 'http://async-results.lsst.codes'
+#  gcs_bucket: 'async-results.lsst.codes'
+#  gcs_bucket_url: 'http://async-results.lsst.codes'
 
 pull-secret:
   enabled: true
