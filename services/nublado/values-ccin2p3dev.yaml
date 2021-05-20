@@ -11,6 +11,7 @@ nublado:
 
   lab:
     no_sudo: 'true'
+    enable_moneypenny: 'true'
     restrict_nodes: 'true'
     image:
       experimentals: 2
