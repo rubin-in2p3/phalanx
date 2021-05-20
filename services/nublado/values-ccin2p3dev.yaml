@@ -6,7 +6,7 @@ nublado:
   oauth_provider: 'jwt'
 
   hub:
-    image: 'lsstsqre/sciplat-hub:exp_0.38.0'
+    image: 'lsstsqre/sciplat-hub:0.38.0'
     persistent_home: false
 
   lab:
