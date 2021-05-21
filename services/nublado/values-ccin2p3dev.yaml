@@ -82,7 +82,13 @@ nublado:
        "mountpoint": "/data",
         "mode": "rw",
         "hostpath": "/data/rsp"
+      },
+      {
+       "mountpoint": "/home",
+        "mode": "rw",
+        "hostpath": "/data/rsp/home"
       }
+
     ]
 
 pull-secret:
