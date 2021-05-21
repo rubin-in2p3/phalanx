@@ -21,8 +21,8 @@ moneypenny:
           runAsUser: 0
           runAsNonRootUser: false
         volumeMounts:
-        - mountPath: /homedirs
-          name: homedirs
+        - mountPath: /home
+          name: home
     retire:
       - name: farthing
         image: lsstsqre/farthing
@@ -31,7 +31,7 @@ moneypenny:
           runAsNonRootUser: true
           allowPrivilegeEscalation: false
     volumes:
-      - name: homedirs
+      - name: home
         hostPath:
           path: /data/rsp/home
           type: Directory
