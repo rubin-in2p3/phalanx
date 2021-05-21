@@ -15,12 +15,14 @@ moneypenny:
 
   orders: |
     commission:
-      - name: farthing
-        image: lsstsqre/farthing
+      - name: initcommission
+        image: lsstsqre/inituserhome
         securityContext:
-          runAsUser: 1000
-          runAsNonRootUser: true
-          allowPrivilegeEscalation: false
+          runAsUser: 0
+          runAsNonRootUser: false
+        volumeMounts:
+        - mountPath: /homedirs
+          name: homedirs
     retire:
       - name: farthing
         image: lsstsqre/farthing
@@ -28,3 +30,6 @@ moneypenny:
           runAsUser: 1000
           runAsNonRootUser: true
           allowPrivilegeEscalation: false
+    volumes:
+      - name: homedirs
+        hostPath: /data/rsp/home
