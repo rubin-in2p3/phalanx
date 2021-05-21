@@ -32,4 +32,6 @@ moneypenny:
           allowPrivilegeEscalation: false
     volumes:
       - name: homedirs
-        hostPath: /data/rsp/home
+        hostPath:
+          path: /data/rsp/home
+          type: Directory
