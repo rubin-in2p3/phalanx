@@ -1,11 +1,5 @@
 vault-secrets-operator:
   environmentVars:
-    - name: http_proxy
-      value: http://ccqserv201.in2p3.fr:3128
-    - name: https_proxy
-      value: http://ccqserv201.in2p3.fr:3128
-    - name: no_proxy
-      value: localhost,argocd-repo-server,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
     - name: VAULT_TOKEN
       valueFrom:
         secretKeyRef:

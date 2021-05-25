@@ -3,33 +3,6 @@ argo-cd:
   redis:
     enabled: true
 
-  dex:
-    env:
-      - name: http_proxy
-        value: http://ccqserv201.in2p3.fr:3128
-      - name: https_proxy
-        value: http://ccqserv201.in2p3.fr:3128
-      - name: no_proxy
-        value: localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-
-  repoServer:
-    env:
-      - name: http_proxy
-        value: http://ccqserv201.in2p3.fr:3128
-      - name: https_proxy
-        value: http://ccqserv201.in2p3.fr:3128
-      - name: no_proxy
-        value: localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-
-  server:
-    env:
-      - name: http_proxy
-        value: http://ccqserv201.in2p3.fr:3128
-      - name: https_proxy
-        value: http://ccqserv201.in2p3.fr:3128
-      - name: no_proxy
-        value: localhost,argocd-repo-server,argocd-dex-server,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16
-
     ingress:
       enabled: true
       hosts:
