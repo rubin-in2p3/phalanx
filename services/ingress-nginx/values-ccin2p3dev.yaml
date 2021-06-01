@@ -1,5 +1,7 @@
 ingress-nginx:
   controller:
+    nodeSelector:
+      kubernetes.io/hostname: "ccqserv202"
     
     config:
       compute-full-forwarded-for: "true"
