@@ -14,7 +14,7 @@ argo-cd:
         - /argo-cd(/|$)(.*)
 
     extraArgs:
-      - "--basehref=/argo-cd"
+#      - "--basehref=/argo-cd"
       - "--insecure=true"
 
     config:
