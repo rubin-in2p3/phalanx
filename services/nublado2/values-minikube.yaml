@@ -3,10 +3,6 @@ nublado2:
     debug:
       enabled: true
 
-    singleuser:
-      storage:
-        type: none
-
     ingress:
       hosts: ["minikube.lsst.codes"]
       annotations:
@@ -14,6 +10,12 @@ nublado2:
 
   config:
     base_url: "https://minikube.lsst.codes"
+    butler_secret_path: "secret/k8s_operator/minikube.lsst.codes/butler-secret"
+    volumes:
+      - name: home
+        emptyDir: {}
+    volume_mounts:
+      - name: home
+        mountPath: /home
 
   vault_secret_path: "secret/k8s_operator/minikube.lsst.codes/nublado2"
-  gafaelfawr_secret_path: "secret/k8s_operator/minikube.lsst.codes/gafaelfawr"

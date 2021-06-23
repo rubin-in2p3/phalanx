@@ -1,56 +1,65 @@
 gafaelfawr:
-  pull_secret: 'pull-secret'
-  host: data.lsst.cloud
+  imagePullSecrets:
+    - name: "pull-secret"
   ingress:
-    host: data.lsst.cloud
-  vault_secrets_path: "secret/k8s_operator/data.lsst.cloud/gafaelfawr"
+    host: "data.lsst.cloud"
+  vaultSecretsPath: "secret/k8s_operator/data.lsst.cloud/gafaelfawr"
 
-  # Do not specify ingress.host because we're using the wildcard virtual host.
+  # Enable the frontend NetworkPolicy.
+  networkPolicy:
+    enabled: true
 
-  # Session length and token expiration (in minutes).
-  issuer:
-    exp_minutes: 43200  # 30 days
+  # Use the CSI storage class so that we can use snapshots.
+  redis:
+    persistence:
+      storageClass: "standard-rwo"
 
-  github:
-    client_id: 65b6333a066375091548
+  config:
+    host: "data.lsst.cloud"
+    databaseUrl: "postgresql://gafaelfawr@localhost/gafaelfawr"
 
-  # Allow access by GitHub team.
-  group_mapping:
-    "exec:admin":
-      - "lsst-sqre-square"
-    "exec:user":
-      - "lsst-sqre-square"
-      - "lsst-sqre-friends"
-      - "lsst-data-management"
-    "read:workspace":
-      - "lsst-sqre-square"
-      - "lsst-sqre-friends"
-      - "lsst-data-management"
-    "read:workspace/user":
-      - "lsst-sqre-square"
-      - "lsst-sqre-friends"
-      - "lsst-data-management"
-    "write:workspace/user":
-      - "lsst-sqre-square"
-      - "lsst-sqre-friends"
-      - "lsst-data-management"
-    "exec:portal":
-      - "lsst-sqre-square"
-      - "lsst-sqre-friends"
-      - "lsst-data-management"
-    "exec:notebook":
-      - "lsst-sqre-square"
-      - "lsst-sqre-friends"
-      - "lsst-data-management"
-    "read:tap":
-      - "lsst-sqre-square"
-      - "lsst-sqre-friends"
-      - "lsst-data-management"
-    "read:image":
-      - "lsst-sqre-square"
-      - "lsst-sqre-friends"
-      - "lsst-data-management"
+    github:
+      clientId: "65b6333a066375091548"
+
+    # Allow access by GitHub team.
+    groupMapping:
+      "admin:provision":
+        - "lsst-sqre-square"
+      "exec:admin":
+        - "lsst-sqre-square"
+      "exec:notebook":
+        - "lsst-sqre-square"
+        - "lsst-sqre-friends"
+        - "lsst-data-management"
+        - "lsst-ops"
+        - "rubin-dp0-delegates"
+      "exec:portal":
+        - "lsst-sqre-square"
+        - "lsst-sqre-friends"
+        - "lsst-data-management"
+        - "lsst-ops"
+        - "rubin-dp0-delegates"
+      "read:tap":
+        - "lsst-sqre-square"
+        - "lsst-sqre-friends"
+        - "lsst-data-management"
+        - "lsst-ops"
+        - "rubin-dp0-delegates"
+
+    initialAdmins:
+      - "afausti"
+      - "athornton"
+      - "cbanek"
+      - "frossie"
+      - "jonathansick"
+      - "rra"
+      - "simonkrughoff"
+
+  cloudsql:
+    enabled: true
+    instanceConnectionName: "science-platform-stable-6994:us-central1:science-platform-stable-0c29612b"
+    serviceAccount: "gafaelfawr@science-platform-stable-6994.iam.gserviceaccount.com"
 
 pull-secret:
   enabled: true
-  path: secret/k8s_operator/data.lsst.cloud/pull-secret
+  path: "secret/k8s_operator/data.lsst.cloud/pull-secret"

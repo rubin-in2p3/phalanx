@@ -1,5 +1,6 @@
 /installer/secrets/
 /services/*/charts/
 /services-expanded/
+.DS_Store
 Chart.lock
 /installer/vault-info/
