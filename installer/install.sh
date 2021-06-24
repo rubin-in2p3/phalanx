@@ -44,12 +44,12 @@ helm upgrade argocd ../services/argocd \
   --wait
 
 echo "Login to argocd..."
-#argocd login --insecure --grpc-web 10.110.57.13 \
-#  --plaintext \
-#  --port-forward \
-#  --port-forward-namespace argocd \
-#  --username admin \
-#  --password $ARGOCD_PASSWORD
+argocd login \
+  --plaintext \
+  --port-forward \
+  --port-forward-namespace argocd \
+  --username admin \
+  --password $ARGOCD_PASSWORD
 
 echo "Creating top level application"
 argocd app create science-platform \
