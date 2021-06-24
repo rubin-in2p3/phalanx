@@ -1,5 +1,9 @@
 argo-cd:
 
+  global:
+    image:
+      tag: v1.8.3
+
   redis:
     enabled: true
 
