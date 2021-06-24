@@ -1,7 +1,15 @@
 argo-cd:
 
+  global:
+    image:
+      tag: argoproj/argocd:v1.8.2
+
   redis:
     enabled: true
+
+#  dex:
+#    image:
+#      tag: v2.28.0
 
   server:
     ingress:
