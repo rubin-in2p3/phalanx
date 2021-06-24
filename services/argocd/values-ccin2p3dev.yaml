@@ -2,7 +2,8 @@ argo-cd:
 
   global:
     image:
-      tag: argoproj/argocd:v1.8.2
+      repository: argoproj/argocd
+      tag: v1.8.2
 
   redis:
     enabled: true
