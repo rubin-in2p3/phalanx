@@ -10,7 +10,8 @@ gafaelfawr:
       enabled: false
 
   config:
-    host: data-dev.lsst.eu
+    host: "data-dev.lsst.eu"
+    databaseUrl: "postgresql://gafaelfawr@postgres.postgres/gafaelfawr"
 
   # Do not specify ingress.host because we're using the wildcard virtual host.
 
