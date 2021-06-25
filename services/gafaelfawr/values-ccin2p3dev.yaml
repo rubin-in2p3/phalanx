@@ -51,8 +51,8 @@ gafaelfawr:
         - "in2p3-dp0-admin"
         - "in2p3-dp0-user"
 
-      initialAdmins:
-       - "bgounon"
+    initialAdmins:
+      - "bgounon"
 
 pull-secret:
   enabled: true
