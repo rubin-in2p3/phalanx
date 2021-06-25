@@ -51,6 +51,9 @@ gafaelfawr:
         - "in2p3-dp0-admin"
         - "in2p3-dp0-user"
 
+      initialAdmins:
+       - "bgounon"
+
 pull-secret:
   enabled: true
   path: secret/k8s_operator/rsp-cc/pull-secret
