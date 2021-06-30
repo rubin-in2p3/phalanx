@@ -20,7 +20,7 @@ nublado2:
 
   config:
     base_url: "https://data-dev.lsst.eu/"
-    butler_secret_path: "secret/k8s_operator/rsp-lapp/butler-secret"
+    butler_secret_path: "secret/k8s_operator/rsp-cc/butler-secret"
 
     volumes:
       - name: data
@@ -38,8 +38,8 @@ nublado2:
       - name: home
         mountPath: /home
 
-  vault_secret_path: "secret/k8s_operator/rsp-lapp/nublado2"
-  gafaelfawr_secrets_path: "secret/k8s_operator/rsp-lapp/gafaelfawr"
+  vault_secret_path: "secret/k8s_operator/rsp-cc/nublado2"
+  gafaelfawr_secrets_path: "secret/k8s_operator/rsp-cc/gafaelfawr"
 
 
 
