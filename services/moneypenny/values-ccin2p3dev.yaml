@@ -7,11 +7,11 @@ moneypenny:
       - host: data-dev.lsst.eu
         paths: ["/moneypenny"]
     annotations:
-      nginx.ingress.kubernetes.io/auth-url: "https://data-dev.lsst.eu/auth?scope=exec:admin"
+      nginx.ingress.kubernetes.io/auth-url: "https://data-dev.lsst.eu/auth?scope=admin:provision"
 
   vault_secrets:
     enabled: true
-    path: "secret/k8s_operator/rsp-lapp/pull-secret"
+    path: "secret/k8s_operator/rsp-cc/pull-secret"
 
   orders: |
     commission:
@@ -21,8 +21,8 @@ moneypenny:
           runAsUser: 0
           runAsNonRootUser: false
         volumeMounts:
-        - mountPath: /home
-          name: home
+        - name: home
+          mountPath: /home
     retire:
       - name: farthing
         image: lsstsqre/farthing
