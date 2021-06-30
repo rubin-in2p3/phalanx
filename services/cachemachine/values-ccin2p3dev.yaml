@@ -1,0 +1,30 @@
+cachemachine:
+  host: "data-dev.lsst.eu"
+
+  ingress:
+    enabled: true
+    hosts:
+      - host: data-dev.lsst.eu
+        paths: ["/cachemachine"]
+
+  vault_secrets:
+    enabled: true
+    path: "secret/k8s_operator/rsp-cc/pull-secret"
+
+  autostart:
+    jupyter: |
+      {
+        "name": "jupyter",
+        "labels": {},
+        "repomen": [
+          {
+            "type": "RubinRepoMan",
+            "registry_url": "registry.hub.docker.com",
+            "repo": "lsstsqre/sciplat-lab",
+            "recommended_tag": "recommended",
+            "num_releases": 0,
+            "num_weeklies": 0,
+            "num_dailies": 0
+          }
+        ]
+      }
