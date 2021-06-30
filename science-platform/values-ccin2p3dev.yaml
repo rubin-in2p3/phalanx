@@ -18,7 +18,7 @@ influxdb:
   enabled: false
 kapacitor:
   enabled: false
-landing_page:
+squareone:
   enabled: true
 logging:
   enabled: false
