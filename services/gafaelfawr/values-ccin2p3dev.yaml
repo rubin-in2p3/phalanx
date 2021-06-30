@@ -51,6 +51,34 @@ gafaelfawr:
         - "in2p3-dp0-admin"
         - "in2p3-dp0-user"
 
+    groupMapping:
+      "exec:admin":
+        - "in2p3-dp0-admin"
+      "exec:user":
+        - "in2p3-dp0-admin"
+        - "in2p3-dp0-user"
+      "read:workspace":
+        - "in2p3-dp0-admin"
+        - "in2p3-dp0-user"
+      "read:workspace/user":
+        - "in2p3-dp0-admin"
+        - "in2p3-dp0-user"
+      "write:workspace/user":
+        - "in2p3-dp0-admin"
+        - "in2p3-dp0-user"
+      "exec:portal":
+        - "in2p3-dp0-admin"
+        - "in2p3-dp0-user"
+      "exec:notebook":
+        - "in2p3-dp0-admin"
+        - "in2p3-dp0-user"
+      "read:tap":
+        - "in2p3-dp0-admin"
+        - "in2p3-dp0-user"
+      "read:image":
+        - "in2p3-dp0-admin"
+        - "in2p3-dp0-user"
+
     initialAdmins:
       - "bgounon"
 
