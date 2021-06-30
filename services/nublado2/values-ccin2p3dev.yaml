@@ -1,0 +1,48 @@
+nublado2:
+  jupyterhub:
+    debug:
+      enabled: true
+
+    hub:
+      base_url: "/nb2"
+
+    singleuser:
+      storage:
+        type: none
+
+    lab:
+      enable_moneypenny: 'true'
+ 
+    ingress:
+      hosts: ["data-dev.lsst.eu"]
+      annotations:
+        nginx.ingress.kubernetes.io/auth-signin: "https://data-dev.lsst.eu/login"
+
+  config:
+    base_url: "https://data-dev.lsst.eu/"
+    butler_secret_path: "secret/k8s_operator/rsp-lapp/butler-secret"
+
+    volumes:
+      - name: data
+        hostPath:
+          path: /data/rsp/nublado2
+          type: Directory
+      - name: home
+        hostPath:
+          path: /data/rsp/home
+          type: Directory
+
+    volume_mounts:
+      - name: data
+        mountPath: /data
+      - name: home
+        mountPath: /home
+
+  vault_secret_path: "secret/k8s_operator/rsp-lapp/nublado2"
+  gafaelfawr_secrets_path: "secret/k8s_operator/rsp-lapp/gafaelfawr"
+
+
+
+
+
+
