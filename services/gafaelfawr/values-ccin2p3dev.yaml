@@ -1,6 +1,6 @@
 gafaelfawr:
-
-  pull_secret: 'pull-secret'
+  imagePullSecrets:
+    - name: "pull-secret"
   ingress:
     host: data-dev.lsst.eu
   vaultSecretsPath: "secret/k8s_operator/rsp-cc/gafaelfawr"
@@ -24,30 +24,17 @@ gafaelfawr:
 
   # Allow access by GitHub team.
     groupMapping:
+      "admin:provision":
+        - "in2p3-dp0-admin"
       "exec:admin":
         - "in2p3-dp0-admin"
-      "exec:user":
-        - "in2p3-dp0-admin"
-        - "in2p3-dp0-user"
-      "read:workspace":
-        - "in2p3-dp0-admin"
-        - "in2p3-dp0-user"
-      "read:workspace/user":
-        - "in2p3-dp0-admin"
-        - "in2p3-dp0-user"
-      "write:workspace/user":
+      "exec:notebook":
         - "in2p3-dp0-admin"
         - "in2p3-dp0-user"
       "exec:portal":
         - "in2p3-dp0-admin"
         - "in2p3-dp0-user"
-      "exec:notebook":
-        - "in2p3-dp0-admin"
-        - "in2p3-dp0-user"
       "read:tap":
-        - "in2p3-dp0-admin"
-        - "in2p3-dp0-user"
-      "read:image":
         - "in2p3-dp0-admin"
         - "in2p3-dp0-user"
 
