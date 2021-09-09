@@ -36,6 +36,7 @@ Intended audience: Maintainers of applications deployed on the Rubin Science Pla
    app-guide/sync-argo-cd
    app-guide/upgrade
    app-guide/add-application
+   app-guide/add-a-onepassword-secret
 
 Operations guide
 ================
@@ -49,11 +50,14 @@ Applications
    :maxdepth: 2
 
    ops/argo-cd/index
+   ops/cachemachine/index
    ops/cert-issuer/index
    ops/cert-manager/index
    ops/gafaelfawr/index
    ops/ingress-nginx/index
    ops/logging/index
+   ops/nublado2/index
+   ops/postgres/index
    ops/rancher-external-ip-webhook/index
    ops/squash-api/index
    ops/vault-secrets-operator/index
@@ -65,3 +69,11 @@ Bootstrapping
    :maxdepth: 2
 
    ops/bootstrapping
+
+Troubleshooting
+---------------
+
+.. toctree::
+   :maxdepth: 2
+
+   ops/troubleshooting/index
