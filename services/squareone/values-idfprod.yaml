@@ -1,4 +1,5 @@
 squareone:
+  replicaCount: 3
   ingress:
     host: "data.lsst.cloud"
     annotations:
@@ -11,6 +12,7 @@ squareone:
     - name: "pull-secret"
   config:
     siteName: "Rubin Science Platform"
+    semaphoreUrl: "https://data.lsst.cloud/semaphore"
 
 pull-secret:
   enabled: true
