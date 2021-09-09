@@ -11,7 +11,7 @@ GIT_URL=`git config --get remote.origin.url`
 # extract the branch from it.  If we're there, use that branch.
 # git branch --show-current will return empty in deatached head.
 #GIT_BRANCH=${GITHUB_HEAD_REF:-`git branch --show-current`}
-GIT_BRANCH=master
+GIT_BRANCH=current
 
 echo "Set VAULT_TOKEN in a secret for vault-secrets-operator..."
 # The namespace may not exist already, but don't error if it does.
