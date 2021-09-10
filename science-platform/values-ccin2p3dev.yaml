@@ -33,7 +33,7 @@ ingress_nginx:
 nublado2:
   enabled: true
 obstap:
-  enabled: false
+  enabled: true
 portal:
   enabled: true
 postgres:

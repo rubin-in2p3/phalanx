@@ -1,0 +1,15 @@
+cadc-tap-postgres:
+  pull_secret: 'pull-secret'
+  tag: "1.0"
+  host: "data-dev.lsst.eu"
+
+  secrets:
+    enabled: false
+
+  vault_secrets:
+    enabled: true
+    path: 'secret/k8s_operator/rsp-cc/tap'
+
+pull-secret:
+  enabled: true
+  path: secret/k8s_operator/rsp-cc/pull-secret
